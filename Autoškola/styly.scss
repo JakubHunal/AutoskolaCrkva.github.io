@@ -1,0 +1,536 @@
+$baseYellow:#FDCD13;
+$baseBlue:#004D9D;
+@mixin flexCenter {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Roboto Condensed';
+}
+
+.landing {
+    position: relative;
+    height: 100vh;
+    width: 100%;
+    .left {
+        position: fixed;
+        left: 0%;
+        top: 0%;
+        height: 100%;
+        width: 100px;
+        background-color: $baseYellow;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        text-align: center;
+        font-weight: bold;
+        z-index: 5;
+        .top {
+            font-size: 1.5em;
+        }
+        .menu {
+            margin-top: 30px;
+            margin-bottom: 10px;
+        }
+        .arrow {
+            transition: all 0.5s ease;
+        }
+        h1 {
+            transform: rotate(-90deg);
+            width: max-content;
+            color: $baseBlue;
+            font-size: 40px;
+            text-transform: uppercase;
+            transform-origin: left top;
+            margin-left: 30px;
+        }
+    }
+    .left:hover {
+        cursor: pointer;
+    }
+    .right {
+        position: absolute;
+        right: 0%;
+        top: 0%;
+        height: 100%;
+        width: calc(100% - 100px);
+        background-image: url("Images/car.jpg");
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    .left-expand {
+        @include flexCenter();
+        position: fixed;
+        left: 0px;
+        top: 0px;
+        height: 100vh;
+        width: 250px;
+        background-color: $baseYellow;
+        border-left: 1px solid rgba(0, 0, 0, 0.1);
+        z-index: 2;
+        margin-left: -250px;
+        transition: all 0.5s ease;
+        a {
+            width: 100%;
+            text-align: center;
+            color: $baseBlue;
+            font-size: 1.5em;
+            position: relative;
+        }
+        a::before {
+            content: "";
+            position: absolute;
+            width: 100%;
+            height: 3px;
+            bottom: -10px;
+            left: 0;
+            background-color: $baseBlue;
+            visibility: hidden;
+            transform: scaleX(0);
+            transition: all 0.5s ease-in-out;
+        }
+        a:hover:before {
+            visibility: visible;
+            transform: scaleX(0.7);
+        }
+    }
+    .left-expand.toggle {
+        margin-left: 100px;
+        transition: all 0.5s ease;
+    }
+    .rotate {
+        transform: rotate(180deg);
+        transition: all 0.5s ease;
+    }
+}
+
+a {
+    text-decoration: none;
+}
+
+main {
+    width: 100%;
+    margin: 100px 400px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.heading {
+    @include flexCenter();
+    width: 100%;
+    font-size: 3em;
+    font-weight: bold;
+    margin-bottom: 80px;
+    h1 {
+        margin: 0px 30px;
+        text-align: center;
+        line-height: 1.5em;
+    }
+}
+
+.stripe {
+    width: 100px;
+    height: 8px;
+}
+
+.introduction {
+    @include flexCenter();
+    width: 100%;
+    background-color: $baseYellow;
+    color: black;
+    .heading {
+        h1 {
+            color: $baseBlue;
+        }
+        .stripe {
+            background-color: $baseBlue;
+        }
+    }
+    .text {
+        width: 100%;
+        text-align: center;
+        font-size: 1.8em;
+        line-height: 1.6em;
+    }
+    .benefits {
+        margin-top: 50px;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 50px;
+        text-align: center;
+        .icon {
+            color: $baseBlue;
+            font-size: 3em;
+            margin-bottom: 20px;
+        }
+        p {
+            font-size: 1.3em;
+            line-height: 1.4em;
+        }
+    }
+}
+
+.license {
+    @include flexCenter();
+    background-color: white;
+    width: 100%;
+    .heading {
+        h1 {
+            color: black;
+        }
+        .stripe {
+            background-color: black;
+        }
+    }
+    .licenses {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 50px;
+        .box {
+            padding: 20px;
+            transition: all 0.5s ease;
+            .icon {
+                text-align: center;
+                color: $baseBlue;
+                font-size: 8em;
+                position: relative;
+            }
+            .text {
+                margin-top: 30px;
+                color: black;
+                font-size: 1.8em;
+                text-transform: uppercase;
+                text-align: center;
+                font-weight: bold;
+                line-height: 1.3em;
+            }
+            .type {
+                @include flexCenter();
+                width: 100%;
+            }
+            .letter {
+                @include flexCenter();
+                width: 50px;
+                height: 50px;
+                background-color: $baseYellow;
+                font-size: 2em;
+                border-radius: 50%;
+                color: black;
+                font-weight: bold;
+            }
+        }
+        .box:hover {
+            background-color: $baseYellow;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+    }
+}
+
+.offer {
+    @include flexCenter();
+    background-color: $baseYellow;
+    width: 100%;
+    .heading {
+        h1 {
+            color: $baseBlue;
+        }
+        .stripe {
+            background-color: $baseBlue;
+        }
+    }
+    .container {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        grid-template-rows: repeat(2, 1fr);
+        gap: 50px;
+        .box {
+            @include flexCenter();
+            .picture {
+                width: 100%;
+                @include flexCenter();
+                .image {
+                    width: 200px;
+                    height: 200px;
+                    border-radius: 50%;
+                    background-position: center;
+                    background-size: cover;
+                    transition: all 0.5s ease;
+                }
+                .image:hover {
+                    border-radius: 0%;
+                    transition: all 0.5s ease;
+                }
+            }
+            .p1 {
+                background-image: url("Images/o1.jpg");
+            }
+            .p2 {
+                background-image: url("Images/o2.jpg");
+            }
+            .p3 {
+                background-image: url("Images/o3.jpg");
+            }
+            .p4 {
+                background-image: url("Images/o4.jpg");
+            }
+            .p5 {
+                background-image: url("Images/o5.jpg");
+            }
+            .p6 {
+                background-image: url("Images/o6.jpg");
+            }
+            .p7 {
+                background-image: url("Images/o7.jpg");
+            }
+            .p8 {
+                background-image: url("Images/o7.jpg");
+            }
+            .text {
+                height: 100px;
+                margin-top: 20px;
+                text-align: center;
+                font-size: 1.5em;
+                line-height: 1.3em;
+            }
+        }
+    }
+}
+
+.contact {
+    @include flexCenter();
+    background-color: white;
+    width: 100%;
+    color: black;
+    .heading {
+        h1 {
+            color: black;
+        }
+        .stripe {
+            background-color: black;
+        }
+    }
+    .box {
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template-columns: repeat(2, 1fr);
+        .contacts {
+            width: 100%;
+            height: 100%;
+        }
+        .map {
+            width: 100%;
+            height: 100%;
+            border: 5px $baseBlue;
+            border-style: dashed;
+            iframe {
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            width: 100%;
+            margin: 50px 0px;
+            .circle {
+                @include flexCenter();
+                background-color: $baseYellow;
+                width: 80px;
+                height: 80px;
+                border-radius: 50%;
+                transition: all 0.5s ease;
+                .icon {
+                    font-size: 3em;
+                    color: $baseBlue;
+                }
+            }
+            .circle:hover {
+                border-radius: 0;
+                transition: all 0.5s ease;
+            }
+            p {
+                margin-left: 20px;
+                font-size: 1.5em;
+                line-height: 1.5em;
+            }
+        }
+    }
+}
+
+footer {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    background-color: $baseYellow;
+    .box {
+        z-index: 180;
+        padding: 40px;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+        line-height: 1.5em;
+        font-size: 1.2em;
+        font-weight: bold;
+        text-align: center;
+    }
+}
+
+@media (max-width:1700px) {
+    main {
+        margin: 100px 200px;
+    }
+    footer {
+        .box {
+            z-index: 1;
+        }
+    }
+}
+
+@media (max-width:1280px) {
+    main {
+        margin: 100px 80px;
+    }
+    .landing {
+        .left {
+            height: max-content;
+            h1 {
+                display: none;
+            }
+        }
+        .toggleLeft {
+            height: 100%;
+        }
+        .right {
+            width: 100%;
+        }
+    }
+    .license {
+        .licenses {
+            .box {
+                .text {
+                    font-size: 1.4em;
+                }
+            }
+        }
+    }
+    .offer {
+        .container {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(4, 1fr);
+            gap: 50px;
+        }
+    }
+    .heading {
+        font-size: 2.5em;
+        h1 {
+            margin: 0px 20px;
+        }
+    }
+}
+
+@media(max-width:930px) {
+    .heading {
+        margin-bottom: 50px;
+    }
+    .stripe {
+        display: none;
+    }
+    .introduction {
+        .benefits {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
+    }
+    .license {
+        .licenses {
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: repeat(2, 1fr);
+        }
+    }
+    .contact {
+        .box {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(2, 1fr);
+        }
+    }
+}
+
+@media (max-width:500px) {
+    .landing {
+        height: 50vh;
+        .left {
+            width: 80px;
+            .top {
+                font-size: 1.2em;
+            }
+            .menu {
+                margin-top: 20px;
+                margin-bottom: 0px;
+            }
+        }
+        .left-expand {
+            width: 200px;
+            margin-left: -200px;
+        }
+        .left-expand.toggle {
+            margin-left: 80px;
+        }
+        .right {
+            height: 100%;
+        }
+    }
+    .license {
+        .licenses {
+            .box {
+                .icon {
+                    font-size: 6em;
+                }
+            }
+        }
+    }
+    .offer {
+        .container {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(8, 1fr);
+        }
+    }
+    .license {
+        .licenses {
+            grid-template-columns: 1fr;
+            grid-template-rows: repeat(4, 1fr);
+        }
+    }
+    main {
+        margin: 80px 20px;
+    }
+    .contact {
+        .box {
+            .container {
+                .circle {
+                    .icon {
+                        font-size: 2.5em;
+                    }
+                }
+                p {
+                    font-size: 1.3em;
+                }
+            }
+        }
+    }
+}
